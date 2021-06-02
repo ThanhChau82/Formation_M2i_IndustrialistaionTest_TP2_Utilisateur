@@ -19,7 +19,10 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean authentifierUser(String login, String password) {
-		// TODO Auto-generated method stub
+		if (userDao.findUserByLoginPassword(login, password)) {
+			return true;
+		}
+		
 		return false;
 	}
 

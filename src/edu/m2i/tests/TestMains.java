@@ -1,8 +1,5 @@
 package edu.m2i.tests;
 
-import com.mysql.jdbc.Connection;
-
-import edu.m2i.connexion.ConnexionBdd;
 import edu.m2i.entities.User;
 import edu.m2i.service.UserService;
 import edu.m2i.service.UserServiceImpl;
@@ -11,14 +8,23 @@ import edu.m2i.validation.ValidateUser;
 public class TestMains {	
 
 	public static void main(String[] args) {
-		// Test connexion bdd
-		ConnexionBdd connexionBdd = new ConnexionBdd();
-		Connection connexion = connexionBdd.connexion;
+		// Test connexion bdd		
+		UserService userService = new UserServiceImpl();
+		if (userService.authentifierUser("login", "mdp")) {
+			// Si authentifier user ok
+			System.out.println("Authentification OK");
+			testAjouterUser(userService);
+		} else {
+			System.out.println("Authentification KO");
+		}
 		
-		User user = new User("Chau", "Thanh", "test", "test");
+	}
+
+	private static void testAjouterUser(UserService userService) {
 		ValidateUser validateUser = new ValidateUser();
+		User user = new User("Chau", "Thanh", "test", "test");
 		if (validateUser.verifChaineNonNull(user.getNom(), user.getPrenom(), user.getLogin(), user.getPassword())) {
-			UserService userService = new UserServiceImpl();
+			
 			userService.inscrireUser(user);
 			System.err.println("Ajout user OK");
 		} else {

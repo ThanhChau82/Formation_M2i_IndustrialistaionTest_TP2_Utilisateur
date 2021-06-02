@@ -17,5 +17,5 @@ public interface UserDao {
 	 * @param password
 	 * @return
 	 */
-	User findUserByLoginPassword(String login, String password); 
+	boolean findUserByLoginPassword(String login, String password); 
 }
