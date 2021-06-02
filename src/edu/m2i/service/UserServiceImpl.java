@@ -1,13 +1,15 @@
 package edu.m2i.service;
 
+import edu.m2i.dao.UserDao;
+import edu.m2i.dao.UserDaoImpl;
 import edu.m2i.entities.User;
 
 public class UserServiceImpl implements UserService {
+	private UserDao userDao = new UserDaoImpl();
 
 	@Override
 	public void inscrireUser(User user) {
-		// TODO Auto-generated method stub
-		
+		userDao.addUser(user);
 	}
 
 	@Override
