@@ -3,6 +3,8 @@ package edu.m2i.dao;
 import edu.m2i.entities.User;
 
 public interface UserDao {
+	void addUserMock(User user);
+	
 	/**
 	 * Ajourter un user dans la bdd
 	 * @param user

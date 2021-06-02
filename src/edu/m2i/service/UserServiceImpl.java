@@ -5,7 +5,12 @@ import edu.m2i.dao.UserDaoImpl;
 import edu.m2i.entities.User;
 
 public class UserServiceImpl implements UserService {
-	private UserDao userDao = new UserDaoImpl();
+	private UserDao userDao = new UserDaoImpl();	
+	
+	@Override
+	public void inscrireUserMock(User user) {
+		userDao.addUserMock(user);		
+	}
 
 	@Override
 	public void inscrireUser(User user) {
@@ -23,5 +28,7 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		
 	}
+
+	
 
 }

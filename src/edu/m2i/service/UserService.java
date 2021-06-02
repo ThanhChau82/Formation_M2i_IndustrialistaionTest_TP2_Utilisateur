@@ -3,6 +3,8 @@ package edu.m2i.service;
 import edu.m2i.entities.User;
 
 public interface UserService {
+	void inscrireUserMock(User user);
+	
 	/**
 	 * Inscription
 	 * @param user
