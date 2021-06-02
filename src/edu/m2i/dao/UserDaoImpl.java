@@ -22,11 +22,11 @@ public class UserDaoImpl implements UserDao{
 		
 		try {
 			PreparedStatement prepareStatement = connexion.prepareStatement(
-					"INSERT INTO `user`(`id`, `nom`, `prenom`, `login`, `password`) VALUES ('" +		
+					"INSERT INTO `user`(`nom`, `prenom`, `login`, `password`) VALUES ('" +		
 					user.getNom() + "', '" +
 					user.getPrenom() + "', '" +
 					user.getLogin() + "', '" +
-					user.getPassword() + ")");
+					user.getPassword() + "')");
 			prepareStatement.executeUpdate();
 			System.out.println("User " + user.toString() + " est ajouté avec succès");
 			connexion.close();
