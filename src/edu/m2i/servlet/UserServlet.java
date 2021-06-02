@@ -41,7 +41,7 @@ public class UserServlet extends HttpServlet {
 		String paramLogin = request.getParameter("login");
 		String paramMdp = request.getParameter("password");
 		
-		String messageErreurClient = "";
+		String message = "";
 		if (paramNom != null && !paramNom.isBlank() &&  
 			paramPrenom != null && !paramPrenom.isBlank() && 
 			paramLogin!= null && !paramLogin.isBlank() && 
@@ -53,16 +53,18 @@ public class UserServlet extends HttpServlet {
 			if (validateUser.verifChaineNonNull(user.getNom(), user.getPrenom(), user.getLogin(), user.getPassword())) {
 				userService = new UserServiceImpl();
 				userService.inscrireUser(user);
-				response.sendRedirect("user.jsp");
+				message = "Ajout succès de l'utilisateur";
+				request.setAttribute("confirmationSaveUser", message);
+				request.getRequestDispatcher("/user.jsp").forward(request, response);
 			} else {
-				messageErreurClient = "Echec d'ajout de l'utilisateur";
-				request.setAttribute("erreurSaveUser", messageErreurClient);
+				message = "Echec d'ajout de l'utilisateur";
+				request.setAttribute("erreurSaveUser", message);
 				request.getRequestDispatcher("/user.jsp").forward(request, response);
 			}
 			
 		} else {			
-			messageErreurClient = "Paramètre(s) null(s) ou blank(s)";
-			request.setAttribute("erreurSaveUser", messageErreurClient);
+			message = "Paramètre(s) null(s) ou blank(s)";
+			request.setAttribute("erreurSaveUser", message);
 			request.getRequestDispatcher("/user.jsp").forward(request, response);
 		}
 	}

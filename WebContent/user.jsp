@@ -44,6 +44,13 @@
 					<%=request.getAttribute("erreurSaveUser") %>
 				</div>
 			  <% } %>
+			  
+			  <!-- Afficher le message de confirmation -->
+			  <% if(request.getAttribute("confirmationSaveUser") != null) { %>
+			  	<div class="alert alert-success" role="alert" >
+					<%=request.getAttribute("confirmationSaveUser") %>
+				</div>
+			  <% } %>
 			  			  
 			</form>    
 		</div>
